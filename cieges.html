@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do CIEGES – Centro Integrado de Estratégia e Gestão em Saúde</title>
+    <meta name="description"
+        content="Painel Info-Saúde ES - Acesse informações e plataformas de saúde do Espírito Santo.">
+    <meta name="keywords"
+        content="saúde, Espírito Santo, painel, informações, plataformas, institucional, painéis de saúde">
+    <meta name="author" content="SESA - Secretaria de Estado de Saúde do Espírito Santo">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://cdn.es.gov.br/images/favicons/governo/favicon.ico">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+        :root {
+            --primary-color: #208baa;
+            --secondary-color: #0080a5;
+            --text-color: #00626f;
+            --hover-bg: #e2e8f0;
+            --dark-hover-bg: #4a5568;
+        }
+
+        body {
+            font-family: "Noto Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings: 100;
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .text-custom-black {
+            color: var(--text-color);
+        }
+
+        .text-custom-white {
+            color: #fff;
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .contraste {
+            filter: contrast(1.5) brightness(1.2);
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+
+        .contraste a {
+            color: #ff0 !important;
+        }
+
+        .contraste button {
+            background-color: #ff0 !important;
+            color: #000 !important;
+        }
+
+        .contraste input,
+        .contraste select {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+
+        .contraste footer {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+
+        .sidebar {
+            width: 64px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .sidebar.expanded {
+            width: 256px;
+        }
+
+        .main-content {
+            margin-left: 64px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .main-content.expanded {
+            margin-left: 256px;
+        }
+
+        .sidebar:not(.expanded) .sidebar-text {
+            display: none;
+        }
+
+        .sidebar:not(.expanded) .sidebar-link img {
+            margin-right: 0;
+        }
+
+
+        @media (min-width: 1024px) {
+            .sidebar-toggle-button {
+                display: none;
+            }
+
+            .sidebar {
+                width: 256px;
+            }
+
+            .main-content {
+                margin-left: 256px;
+            }
+
+            .sidebar-text {
+                display: inline;
+            }
+
+            .sidebar-link img {
+                margin-right: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-logo {
+                height: 3rem;
+            }
+
+            .header-title {
+                font-size: 1.25rem;
+            }
+
+            .sidebar {
+                top: 5rem;
+            }
+
+            .main-content {
+                padding-top: 5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-logo {
+                height: 2.5rem;
+            }
+
+            .header-title {
+                font-size: 1rem;
+            }
+
+            .sidebar {
+                top: 4rem;
+            }
+
+            .main-content {
+                padding-top: 4rem;
+            }
+        }
+
+
+        .floating-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem;
+            z-index: 50;
+            top: calc(100% + 0.5rem);
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .floating-menu a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+            white-space: nowrap;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-custom-black dark:bg-gray-900 dark:text-custom-white">
+
+    <button id="openPopup"
+        class="fixed bottom-6 right-6 bg-[var(--primary-color)] hover:bg-[#187591] text-white px-4 py-2 rounded-full shadow-lg transition z-50">
+        ⭐ Mais acessados!
+    </button>
+
+
+    <div id="popupModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden z-50">
+        <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-xl relative animate-fade-in">
+            <button id="closePopup" class="absolute top-2 right-3 text-gray-500 text-xl font-bold hover:text-red-500">
+                &times;
+            </button>
+            <h2 class="text-lg font-light text-[var(--secondary-color)] mb-4 text-center">
+                Plataformas Mais Acessadas
+            </h2>
+            <ul id="mostAccessedList" class="space-y-2 text-sm text-gray-700">
+            </ul>
+        </div>
+    </div>
+
+    <div class="w-full h-full ">
+        <svg viewBox="0 0 1440 100" class="w-full h-full">
+            <defs>
+                <linearGradient id="gradES" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:var(--primary-color);stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:var(--secondary-color);stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <path fill="url(#gradES)"
+                d="M0,80 L48,82.65 C96,85.5 192,90.5 288,82.65 C384,74.5 480,53.5 576,48 C672,42.5 768,53.5 864,58.65 C960,64 1056,64 1152,69.35 C1248,74.5 1344,85.5 1392,90.65 L1440,96 L1440,0 L1392,0 L1344,0 L1248,0 L1152,0 L1056,0 L960,0 L864,0 L768,0 L672,0 L576,0 L480,0 L384,0 L288,0 L192,0 L96,0 L48,0 L0,0 Z">
+            </path>
+        </svg>
+    </div>
+
+    <header
+        class="fixed top-0 left-0 w-full bg-white shadow-md z-40 flex items-center justify-between p-4 h-20 md:h-24">
+        <button id="menuToggle"
+            class="lg:hidden sidebar-toggle-button text-gray-700 hover:text-gray-900 focus:outline-none ml-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+        <img src="logo_sesa.png" alt="Logo SESA-ES" class="h-12 md:h-16 header-logo ml-4">
+        <h1
+            class="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-blue-800 to-[var(--primary-color)] text-transparent bg-clip-text text-center flex-1 header-title mx-4">
+            CIEGES – Centro Integrado de Estratégia e Gestão em Saúde
+        </h1>
+        <img src="Brasao_Governo.png" alt="Governo do Espírito Santo" class="h-12 md:h-16 header-logo mr-4">
+    </header>
+
+    <aside id="sidebar"
+        class="fixed top-20 md:top-24 left-0 h-[calc(100%-80px)] md:h-[calc(100%-96px)] bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 sidebar z-30 transition-all duration-300 ease-in-out overflow-y-auto">
+        <nav class="mt-4">
+            <a href="#" id="dashboardLink"
+                class="flex items-center p-4 hover:bg-[var(--hover-bg)] dark:hover:bg-[var(--dark-hover-bg)] transition-colors duration-200 sidebar-link">
+                <img src="saude-dashboard.png" alt="Dashboard" class="h-6 w-6 mr-3">
+                <span class="sidebar-text">Dashboard</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main id="mainContent" class="main-content pt-20 md:pt-24 p-3 min-h-screen transition-all duration-300 ease-in-out">
+        <div id="cardContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 justify-items-center">
+        </div>
+        <div id="moduleContentArea" class="hidden">
+        </div>
+    </main>
+
+
+    <footer class="w-full bg-gray-200 py-3 text-center text-xs text-gray-700 border-t relative bottom-0">
+        <p class="font-semibold">SESA- Secretaria de Estado de Saúde do Espírito Santo</p>
+        <p>Núcleo de Desenvolvimento De Sistemas - NEDTI | SESA ES</p>
+        <p class="mt-1">&copy; <span id="currentYear"></span> Governo do Estado do Espírito Santo</p>
+    </footer>
+
+
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+        <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-xl relative flex flex-col">
+            <button onclick="fecharModal()"
+                class="absolute top-2 right-3 text-[var(--primary-color)] text-xl hover:text-red-600">&times;</button>
+            <h2 id="modalTitle" class="text-lg font-bold mb-2 text-[var(--primary-color)]"></h2>
+            <div id="modalContent" class="text-sm text-gray-700"></div>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    document.getElementById("currentYear").innerText = new Date().getFullYear();
+
+    const cardsData = [
+        {
+            id: 'regulacaoAmbulatorial',
+            title: "Regulação Ambulatorial",
+            image: "ambulatorial.png",
+            category: "Regulação",
+            tags: ["cidadão", "serviços"],
+            popup: true,
+            popupContent: `
+                <a href="http://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2Fd7bb7c2b-28c9-42bf-8818-28ac9f084230&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Painel Transparência para Consultas e Exames</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão de Oferta</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão de Filas</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão Clínica</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Absenteísmo</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Opinião Formativa</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão de Acesso</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão Enunciado CNJ93</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=1&objectName=ve18184&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Deslocamento</a>
+            `,
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Regulação Ambulatorial</h2>
+                <p>Conteúdo detalhado e painéis interativos sobre a Regulação Ambulatorial.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                    <h3 class="font-semibold text-lg mb-2">Acessos Rápidos:</h3>
+                    <a href="http://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2Fd7bb7c2b-28c9-42bf-8818-28ac9f084230&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Transparência para Consultas e Exames</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Oferta</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Filas</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Clínica</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Absenteísmo</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Opinião Formativa</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Acesso</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Enunciado CNJ93</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=1&objectName=ve18184&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Deslocamento</a>
+                </div>
+
+                
+            `
+        },
+        {
+            id: 'regulacaoLeitos',
+            title: "Regulação de Leitos",
+            image: "cama.jpg",
+            category: "Regulação",
+            tags: ["cidadão", "serviços"],
+            popup: true,
+            popupContent: `
+                <a href="https://regulacao.saude.es.gov.br/regulador/" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Regulação Hospitalar</a>
+            `,
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Regulação de Leitos</h2>
+                <p>Informações e painéis sobre a gestão de leitos em hospitais.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                    <a href="https://regulacao.saude.es.gov.br/regulador/" target="_blank" class="block hover:underline text-[var(--text-color)]">Acessar Regulação Hospitalar</a>
+                </div>
+
+            `
+        },
+        {
+            id: 'contratualizacao',
+            title: "Contratualização",
+            link: "",
+            image: "fina-h.png",
+            tags: ["Institucional", "dados"],
+            popup: true,
+            popupContent: `
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=2&objectName=ve14302&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Financeiro Hospitalar</a>
+            `,
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Contratualização</h2>
+                <p>Painéis relacionados aos contratos e financiamento hospitalar.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=2&objectName=ve14302&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Acessar Financeiro Hospitalar</a>
+                </div>
+            `
+        },
+        {
+            id: 'mandadosJudiciais',
+            title: "Mandados Judiciais",
+            link: "",
+            image: "gavel.png",
+            tags: ["cidadão", "serviços"],
+            popup: true,
+            popupContent: `
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=3&objectName=ve14537&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Acompanhamento de Processos</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=3&objectName=ve14550&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Judicialização da Saúde</a>
+            `,
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Mandados Judiciais</h2>
+                <p>Acompanhamento de processos judiciais na área da saúde.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=3&objectName=ve14537&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Acompanhamento de Processos</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=3&objectName=ve14550&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Judicialização da Saúde</a>
+                </div>
+            `
+        },
+        {
+            id: 'recursosHumanos',
+            title: "Recursos Humanos",
+            link: "https://servidor.es.gov.br/novo-espaco-rh",
+            image: "recurs.png",
+            tags: ["Institucional"],
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Recursos Humanos</h2>
+                <p>Acesse o novo espaço de Recursos Humanos para servidores da saúde.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                    <a href="https://servidor.es.gov.br/novo-espaco-rh" target="_blank" class="block hover:underline text-[var(--text-color)]">Ir para o Novo Espaço RH</a>
+                </div>
+            `
+        },
+        {
+            id: 'assistenciaFarmaceutica',
+            title: "Assistência Farmacêutica",
+            image: "farmacia aaa.png",
+            tags: ["cidadão", "serviços"],
+            popup: true,
+            popupContent: `
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=4&objectName=ve14673&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Deferimentos</a>
+                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=4&objectName=ve14686&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Pacientes</a>
+            `,
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Assistência Farmacêutica</h2>
+                <p>Informações sobre deferimentos e pacientes da assistência farmacêutica.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=4&objectName=ve14673&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Deferimentos</a>
+                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=4&objectName=ve14686&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Pacientes</a>
+                </div>
+            `
+        },
+        {
+            id: 'atencaoPrimaria',
+            title: "Atenção Primária",
+            image: "atencao-primaria.png",
+            tags: ["cidadão", "serviços"],
+            link: `https://atencaoprimaria.es.gov.br/`,
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Atenção Primária</h2>
+                <p>Acesse informações e dados sobre a atenção primária à saúde.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                    <a href="https://atencaoprimaria.es.gov.br/" target="_blank" class="block hover:underline text-[var(--text-color)]">Ir para Atenção Primária</a>
+                </div>
+            `
+        },
+        {
+            id: 'vigilanciaSaude',
+            title: "Vigilância em Saúde",
+            image: "vigilancia.png",
+            tags: ["cidadão", "serviços"],
+            link: "https://app.wiki.saude.es.gov.br/pt-br/vigilanciasaude/sistema-de-informacao-e-dados/paineis",
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Vigilância em Saúde</h2>
+                <p>Consulte dados epidemiológicos e informações sobre controle de agravos.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                    <a href="https://app.wiki.saude.es.gov.br/pt-br/vigilanciasaude/sistema-de-informacao-e-dados/paineis" target="_blank" class="block hover:underline text-[var(--text-color)]">Acessar Painéis de Vigilância</a>
+                </div>
+            `
+        },
+        {
+            id: 'outrosPaineis',
+            title: "Outros Paineis",
+            image: "https://img.icons8.com/ios-filled/64/000000/settings.png",
+            tags: ["cidadão", "serviços"],
+            popup: true,
+            popupContent: `
+                  <a href="http://info-saude.hml.sus.es.gov.br/" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Info-Saúde</a>
+                <a href="#" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Observatorio de Saúde</a>
+            `,
+            moduleContent: `
+                <h2 class="text-2xl font-bold mb-4">Outros Painéis</h2>
+                <p>Aqui você encontra acesso a painéis diversos e em desenvolvimento.</p>
+                <div class="mt-4 border p-4 rounded-md bg-gray-50">
+                <a href="http://info-saude.hml.sus.es.gov.br/" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Info-Saúde</a>
+                <a href="#" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Observatorio de Saúde</a>
+                </div>
+            `
+        }
+    ];
+
+    const container = document.getElementById("cardContainer");
+    const moduleContentArea = document.getElementById("moduleContentArea");
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const menuToggle = document.getElementById('menuToggle');
+    const dashboardLink = document.getElementById('dashboardLink');
+
+    let activeCategory = "Todos";
+    let searchTerm = "";
+
+    function renderCards() {
+        container.innerHTML = "";
+        const filtered = cardsData.filter((card) => {
+            const matchCategory = activeCategory === "Todos" || card.category === activeCategory;
+            const matchText = card.title.toLowerCase().includes(searchTerm) || (card.description && card.description.toLowerCase().includes(searchTerm));
+            return matchCategory && matchText;
+        });
+
+        if (filtered.length === 0) {
+            container.innerHTML = "<p class='col-span-full text-center text-gray-500'>Nenhuma plataforma encontrada.</p>";
+        }
+
+        filtered.forEach((card) => {
+            const el = document.createElement("div");
+            el.setAttribute("data-id", card.id);
+            el.className = "w-full max-w-[220px] h-full bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center transition-transform transform hover:scale-105 relative border-t-4 border-[var(--primary-color)] cursor-pointer";
+
+            el.innerHTML = `
+                <img src="${card.image}" alt="${card.title}" class="h-24 w-24 object-contain mx-auto mb-3" />
+                <h3 class="text-base font-bold mb-1 uppercase text-center text-[var(--text-color)]">${card.title}</h3>
+                ${card.description ? `<p class="text-xs text-gray-500 text-center">${card.description}</p>` : ''}
+            `;
+
+            el.addEventListener("click", (event) => {
+                trackAccess(card.title);
+
+                if (card.popup && card.popupContent) {
+                    abrirModal(card.title, card.popupContent);
+                } else if (card.link) {
+                    window.open(card.link, "_blank");
+                } else if (card.moduleContent) {
+                    loadModuleContent(card.title, card.moduleContent);
+                }
+                event.stopPropagation();
+            });
+
+            container.appendChild(el);
+        });
+    }
+
+    function abrirModal(titulo, conteudo) {
+        document.getElementById("modalTitle").innerText = titulo;
+        document.getElementById("modalContent").innerHTML = conteudo;
+        document.getElementById("modal").classList.remove("hidden");
+        document.getElementById("modal").classList.add("flex");
+    }
+
+    function fecharModal() {
+        document.getElementById("modal").classList.add("hidden");
+        document.getElementById("modal").classList.remove("flex");
+    }
+
+    function trackAccess(title) {
+        let stored = JSON.parse(localStorage.getItem("accessStats")) || {};
+        stored[title] = (stored[title] || 0) + 1;
+        localStorage.setItem("accessStats", JSON.stringify(stored));
+        renderMostAccessed();
+    }
+
+    function renderMostAccessed() {
+        const list = document.getElementById("mostAccessedList");
+        const stats = JSON.parse(localStorage.getItem("accessStats")) || {};
+        const sorted = Object.entries(stats).sort((a, b) => b[1] - a[1]).slice(0, 5);
+
+        list.innerHTML = "";
+
+        if (sorted.length === 0) {
+            list.innerHTML = "<li>Nenhuma plataforma acessada ainda.</li>";
+            return;
+        }
+
+        sorted.forEach(([title, count]) => {
+            const card = cardsData.find((c) => c.title === title);
+            if (card) {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = "#";
+                a.classList.add("text-[var(--text-color)]", "hover:underline");
+                a.textContent = title;
+
+                a.setAttribute('data-card-id', card.id);
+
+                a.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    trackAccess(card.title);
+
+                    document.getElementById("popupModal").classList.add("hidden");
+                    document.getElementById("popupModal").classList.remove("flex");
+
+                    if (card.popup && card.popupContent) {
+                        abrirModal(card.title, card.popupContent);
+                    } else if (card.link) {
+                        window.open(card.link, "_blank");
+                    } else if (card.moduleContent) {
+                        loadModuleContent(card.title, card.moduleContent);
+                    }
+                });
+
+                li.innerHTML = `📌 `;
+                li.appendChild(a);
+                const countSpan = document.createElement("span");
+                countSpan.classList.add("text-xs", "text-gray-400", "ml-1");
+                countSpan.textContent = `(${count}x)`;
+                li.appendChild(countSpan);
+
+                list.appendChild(li);
+            }
+        });
+    }
+    document.getElementById("openPopup").addEventListener("click", () => {
+        renderMostAccessed();
+        document.getElementById("popupModal").classList.remove("hidden");
+        document.getElementById("popupModal").classList.add("flex");
+    });
+
+    document.getElementById("closePopup").addEventListener("click", () => {
+        document.getElementById("popupModal").classList.add("hidden");
+        document.getElementById("popupModal").classList.remove("flex");
+    });
+
+    document.getElementById("popupModal").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("popupModal")) {
+            document.getElementById("popupModal").classList.add("hidden");
+            document.getElementById("popupModal").classList.remove("flex");
+        }
+    });
+
+
+    function toggleSidebar() {
+        sidebar.classList.toggle('expanded');
+        mainContent.classList.toggle('expanded');
+        sidebar.querySelectorAll('.sidebar-text').forEach(span => {
+            span.classList.toggle('hidden');
+        });
+        sidebar.querySelectorAll('.sidebar-link img').forEach(img => {
+            img.classList.toggle('mr-3');
+            img.classList.toggle('mr-0');
+        });
+    }
+
+    function loadModuleContent(moduleTitle, contentHtml) {
+        container.classList.add('hidden');
+        moduleContentArea.classList.remove('hidden');
+
+        moduleContentArea.innerHTML = contentHtml;
+
+        trackAccess(moduleTitle);
+
+        if (window.innerWidth < 1024 && sidebar.classList.contains('expanded')) {
+            toggleSidebar();
+        }
+
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.classList.remove('bg-[var(--hover-bg)]', 'dark:bg-[var(--dark-hover-bg)]');
+            link.classList.remove('font-bold', 'text-[var(--primary-color)]');
+        });
+        const clickedLink = document.querySelector(`.sidebar-link[data-module-id="${cardsData.find(card => card.title === moduleTitle)?.id}"]`);
+        if (clickedLink) {
+            clickedLink.classList.add('bg-[var(--hover-bg)]', 'dark:bg-[var(--dark-hover-bg)]');
+            clickedLink.classList.add('font-bold', 'text-[var(--primary-color)]');
+        }
+    }
+
+    function showDashboard() {
+        moduleContentArea.classList.add('hidden');
+        container.classList.remove('hidden');
+        trackAccess("Dashboard");
+
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.classList.remove('bg-[var(--hover-bg)]', 'dark:bg-[var(--dark-hover-bg)]');
+            link.classList.remove('font-bold', 'text-[var(--primary-color)]');
+        });
+        dashboardLink.classList.add('bg-[var(--hover-bg)]', 'dark:bg-[var(--dark-hover-bg)]');
+        dashboardLink.classList.add('font-bold', 'text-[var(--primary-color)]');
+
+        if (window.innerWidth < 1024 && sidebar.classList.contains('expanded')) {
+            toggleSidebar();
+        }
+    }
+
+    menuToggle.addEventListener('click', toggleSidebar);
+
+    dashboardLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showDashboard();
+    });
+
+    const sidebarNav = sidebar.querySelector('nav');
+    cardsData.forEach(card => {
+        const linkEl = document.createElement('a');
+        linkEl.href = "#";
+        linkEl.classList.add('flex', 'items-center', 'p-4', 'hover:bg-[var(--hover-bg)]', 'dark:hover:bg-[var(--dark-hover-bg)]', 'transition-colors', 'duration-200', 'sidebar-link');
+        linkEl.setAttribute('data-module-id', card.id);
+
+        linkEl.innerHTML = `
+            <img src="${card.image}" alt="${card.title}" class="h-6 w-6 mr-3">
+            <span class="sidebar-text">${card.title}</span>
+        `;
+
+        linkEl.addEventListener('click', (e) => {
+            e.preventDefault();
+            loadModuleContent(card.title, card.moduleContent);
+        });
+        sidebarNav.appendChild(linkEl);
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        renderCards();
+        showDashboard();
+        if (window.innerWidth >= 1024) {
+            sidebar.classList.add('expanded');
+            mainContent.classList.add('expanded');
+        } else {
+            sidebar.classList.remove('expanded');
+            mainContent.classList.remove('expanded');
+        }
+    });
+
+    tailwind.config = {
+        darkMode: 'class',
+    }
+
+</script>
+
+</html>
