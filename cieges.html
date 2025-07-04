@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portal do CIEGES – Centro Integrado de Estratégia e Gestão em Saúde</title>
     <meta name="description"
-        content="Painel Info-Saúde ES - Acesse informações e plataformas de saúde do Espírito Santo.">
+        content="Portal do CIEGES – Centro Integrado de Estratégia e Gestão em Saúde do Espírito Santo.">
     <meta name="keywords"
         content="saúde, Espírito Santo, painel, informações, plataformas, institucional, painéis de saúde">
     <meta name="author" content="SESA - Secretaria de Estado de Saúde do Espírito Santo">
@@ -538,56 +538,89 @@
         renderMostAccessed();
     }
 
-    function renderMostAccessed() {
-        const list = document.getElementById("mostAccessedList");
-        const stats = JSON.parse(localStorage.getItem("accessStats")) || {};
-        const sorted = Object.entries(stats).sort((a, b) => b[1] - a[1]).slice(0, 5);
 
-        list.innerHTML = "";
-
-        if (sorted.length === 0) {
-            list.innerHTML = "<li>Nenhuma plataforma acessada ainda.</li>";
-            return;
+    // Função para obter os dados salvos nos cookies
+        function getAccessStatsFromCookies() {
+            const cookie = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('accessStats='));
+            if (!cookie) return {};
+            try {
+                return JSON.parse(decodeURIComponent(cookie.split('=')[1]));
+            } catch (e) {
+                return {};
+            }
         }
 
-        sorted.forEach(([title, count]) => {
-            const card = cardsData.find((c) => c.title === title);
-            if (card) {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = "#";
-                a.classList.add("text-[var(--text-color)]", "hover:underline");
-                a.textContent = title;
+        // Função para salvar os dados atualizados no cookie
+        function saveAccessStatsToCookies(stats) {
+            const json = encodeURIComponent(JSON.stringify(stats));
+            document.cookie = `accessStats=${json}; path=/; max-age=604800`; // 7 dias
+        }
 
-                a.setAttribute('data-card-id', card.id);
+        // Função para registrar um acesso
+        function trackAccess(title) {
+            const stats = getAccessStatsFromCookies();
+            stats[title] = (stats[title] || 0) + 1;
+            saveAccessStatsToCookies(stats);
+            renderMostAccessed(); // Atualiza lista após acesso
+        }
 
-                a.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    trackAccess(card.title);
+        // Função principal para exibir os mais acessados
+        function renderMostAccessed() {
+            const list = document.getElementById("mostAccessedList");
+            const stats = getAccessStatsFromCookies();
+            const sorted = Object.entries(stats).sort((a, b) => b[1] - a[1]).slice(0, 5);
 
-                    document.getElementById("popupModal").classList.add("hidden");
-                    document.getElementById("popupModal").classList.remove("flex");
+            list.innerHTML = "";
 
-                    if (card.popup && card.popupContent) {
-                        abrirModal(card.title, card.popupContent);
-                    } else if (card.link) {
-                        window.open(card.link, "_blank");
-                    } else if (card.moduleContent) {
-                        loadModuleContent(card.title, card.moduleContent);
-                    }
-                });
-
-                li.innerHTML = `📌 `;
-                li.appendChild(a);
-                const countSpan = document.createElement("span");
-                countSpan.classList.add("text-xs", "text-gray-400", "ml-1");
-                countSpan.textContent = `(${count}x)`;
-                li.appendChild(countSpan);
-
-                list.appendChild(li);
+            if (sorted.length === 0) {
+                list.innerHTML = "<li>Nenhuma plataforma acessada ainda.</li>";
+                return;
             }
-        });
-    }
+
+            sorted.forEach(([title, count]) => {
+                const card = cardsData.find((c) => c.title === title);
+                if (card) {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = "#";
+                    a.classList.add("text-[var(--text-color)]", "hover:underline");
+                    a.textContent = title;
+
+                    a.setAttribute('data-card-id', card.id);
+
+                    a.addEventListener('click', (event) => {
+                        event.preventDefault();
+
+                        trackAccess(card.title); // registra o acesso
+
+                        document.getElementById("popupModal").classList.add("hidden");
+                        document.getElementById("popupModal").classList.remove("flex");
+
+                        if (card.popup && card.popupContent) {
+                            abrirModal(card.title, card.popupContent);
+                        } else if (card.link) {
+                            window.open(card.link, "_blank");
+                        } else if (card.moduleContent) {
+                            loadModuleContent(card.title, card.moduleContent);
+                        }
+                    });
+
+                    li.innerHTML = `📌 `;
+                    li.appendChild(a);
+
+                    const countSpan = document.createElement("span");
+                    countSpan.classList.add("text-xs", "text-gray-400", "ml-1");
+                    countSpan.textContent = `(${count}x)`;
+                    li.appendChild(countSpan);
+
+                    list.appendChild(li);
+                }
+            });
+        }
+
+
     document.getElementById("openPopup").addEventListener("click", () => {
         renderMostAccessed();
         document.getElementById("popupModal").classList.remove("hidden");
