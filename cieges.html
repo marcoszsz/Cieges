@@ -175,7 +175,6 @@
             }
         }
 
-
         .floating-menu {
             position: absolute;
             background: white;
@@ -199,6 +198,8 @@
             white-space: nowrap;
             color: #000000;
         }
+
+
     </style>
 </head>
 
@@ -206,7 +207,7 @@
 
     <button id="openPopup"
         class="fixed bottom-6 right-6 bg-[var(--primary-color)] hover:bg-[#187591] text-white px-4 py-2 rounded-full shadow-lg transition z-50">
-        ⭐ Mais acessados!
+        ⭐ Mais acessados !
     </button>
 
 
@@ -216,7 +217,7 @@
                 &times;
             </button>
             <h2 class="text-lg font-light text-[var(--secondary-color)] mb-4 text-center">
-                Plataformas Mais Acessadas
+                Painéis Mais Acessados
             </h2>
             <ul id="mostAccessedList" class="space-y-2 text-sm text-gray-700">
             </ul>
@@ -261,7 +262,7 @@
             <a href="#" id="dashboardLink"
                 class="flex items-center p-4 hover:bg-[var(--hover-bg)] dark:hover:bg-[var(--dark-hover-bg)] transition-colors duration-200 sidebar-link">
                 <img src="saude-dashboard.png" alt="Dashboard" class="h-6 w-6 mr-3">
-                <span class="sidebar-text">Paineis</span>
+                <span class="sidebar-text">Painéis</span>
             </a>
         </nav>
     </aside>
@@ -329,8 +330,6 @@
                     <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Enunciado CNJ93</a>
                     <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=1&objectName=ve18184&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Deslocamento</a>
                 </div>
-
-                
             `
         },
         {
@@ -443,7 +442,7 @@
             tags: ["cidadão", "serviços"],
             popup:true,
             popupContent:`
-                <p> Paineis Em Fase de Desenvolvimento...</p>`,
+                <p> Painéis Em Fase de Desenvolvimento...</p>`,
             moduleContent: `
         <p class="text-center">Painel em desenvolvimento</p>
     `
@@ -539,7 +538,6 @@
     }
 
 
-    // Função para obter os dados salvos nos cookies
         function getAccessStatsFromCookies() {
             const cookie = document.cookie
                 .split('; ')
@@ -552,21 +550,18 @@
             }
         }
 
-        // Função para salvar os dados atualizados no cookie
         function saveAccessStatsToCookies(stats) {
             const json = encodeURIComponent(JSON.stringify(stats));
-            document.cookie = `accessStats=${json}; path=/; max-age=604800`; // 7 dias
+            document.cookie = `accessStats=${json}; path=/; max-age=604800`;
         }
 
-        // Função para registrar um acesso
         function trackAccess(title) {
             const stats = getAccessStatsFromCookies();
             stats[title] = (stats[title] || 0) + 1;
             saveAccessStatsToCookies(stats);
-            renderMostAccessed(); // Atualiza lista após acesso
+            renderMostAccessed(); 
         }
 
-        // Função principal para exibir os mais acessados
         function renderMostAccessed() {
             const list = document.getElementById("mostAccessedList");
             const stats = getAccessStatsFromCookies();
@@ -575,7 +570,7 @@
             list.innerHTML = "";
 
             if (sorted.length === 0) {
-                list.innerHTML = "<li>Nenhuma plataforma acessada ainda.</li>";
+                list.innerHTML = "<li>Nenhuma plataforma acessada ainda !</li>";
                 return;
             }
 
@@ -593,7 +588,7 @@
                     a.addEventListener('click', (event) => {
                         event.preventDefault();
 
-                        trackAccess(card.title); // registra o acesso
+                        trackAccess(card.title); 
 
                         document.getElementById("popupModal").classList.add("hidden");
                         document.getElementById("popupModal").classList.remove("flex");
