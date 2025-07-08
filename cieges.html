@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -450,7 +449,7 @@
         {
             id: 'outrosPaineis',
             title: "Outros Paineis",
-            image: "https://img.icons8.com/ios-filled/64/000000/settings.png",
+            image: "outros.jpg",
             tags: ["cidadão", "serviços"],
             popup: true,
             popupContent: `
@@ -493,13 +492,30 @@
         filtered.forEach((card) => {
             const el = document.createElement("div");
             el.setAttribute("data-id", card.id);
-            el.className = "w-full max-w-[220px] h-full bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center transition-transform transform hover:scale-105 relative border-t-4 border-[var(--primary-color)] cursor-pointer";
-
+            el.className = card.id === 'TESTE'
+                ? "w-full max-w-[220px] h-full bg-gray-200 border-2 border-dashed border-gray-400 rounded-xl p-4 flex flex-col items-center justify-center opacity-50 cursor-not-allowed"
+                : "w-full max-w-[220px] h-full bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center transition-transform transform hover:scale-105 relative border-t-4 border-[var(--primary-color)] cursor-pointer";
+          
             el.innerHTML = `
                 <img src="${card.image}" alt="${card.title}" class="h-24 w-24 object-contain mx-auto mb-3" />
                 <h3 class="text-base font-bold mb-1 uppercase text-center text-[var(--text-color)]">${card.title}</h3>
                 ${card.description ? `<p class="text-xs text-gray-500 text-center">${card.description}</p>` : ''}
             `;
+
+            if (card.id !== 'TESTE') {
+                el.addEventListener("click", (event) => {
+                    trackAccess(card.title);
+                    if (card.popup && card.popupContent) {
+                        abrirModal(card.title, card.popupContent);
+                    } else if (card.link) {
+                        window.open(card.link, "_blank");
+                    } else if (card.moduleContent) {
+                        loadModuleContent(card.title, card.moduleContent);
+                    }
+                    event.stopPropagation();
+                });
+            }
+              
 
             el.addEventListener("click", (event) => {
                 trackAccess(card.title);
