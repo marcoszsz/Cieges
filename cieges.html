@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -238,22 +239,22 @@
         </svg>
     </div>
 
-    <header
-        class="fixed top-0 left-0 w-full bg-white shadow-md z-40 flex items-center justify-between p-4 h-20 md:h-24">
+    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-40 flex items-center justify-center p-4 h-20 md:h-24">
         <button id="menuToggle"
-            class="lg:hidden sidebar-toggle-button text-gray-700 hover:text-gray-900 focus:outline-none ml-2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
+            class="absolute left-2 lg:hidden sidebar-toggle-button text-gray-700 hover:text-gray-900 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </button>
-        <img src="logo sesa.png" alt="Logo SESA-ES" class="h-12 md:h-16 header-logo ml-4">
+        <img src="logo sesa.png" alt="Logo SESA-ES" class="absolute left-12 h-12 md:h-16 header-logo">
         <h1
-            class="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-blue-800 to-[var(--primary-color)] text-transparent bg-clip-text text-center flex-1 header-title mx-4">
+            class="text-2xl md:text-2xl font-extrabold bg-gradient-to-r from-[#73b6ca] to-pink-600 text-transparent bg-clip-text text-center drop-shadow px-4">
             CIEGES – Centro Integrado de Estratégia e Gestão em Saúde
         </h1>
-        <img src="Brasao_Governo.png" alt="Governo do Espírito Santo" class="h-12 md:h-16 header-logo mr-4">
+        
+        <img src="Brasao_Governo.png" alt="Governo do Espírito Santo" class="absolute right-4 h-12 md:h-16 header-logo">
     </header>
+    
 
     <aside id="sidebar"
         class="fixed top-20 md:top-24 left-0 h-[calc(100%-80px)] md:h-[calc(100%-96px)] bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 sidebar z-30 transition-all duration-300 ease-in-out overflow-y-auto">
@@ -266,12 +267,15 @@
         </nav>
     </aside>
 
-    <main id="mainContent" class="main-content pt-20 md:pt-3 p-3 min-h-screen transition-all duration-300 ease-in-out">
-        <div id="cardContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 justify-items-center">
-        </div>
-        <div id="moduleContentArea" class="hidden">
+    <main id="mainContent" class="main-content pt-10 md:pt-4 p-3 min-h-screen transition-all duration-300 ease-in-out">
+        <div class="max-w-5xl mx-auto"> <!-- Ajuste aqui -->
+            <div id="cardContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center">
+            </div>
+            <div id="moduleContentArea" class="hidden">
+            </div>
         </div>
     </main>
+    
 
 
     <footer class="w-full bg-gray-200 py-3 text-center text-xs text-gray-700 border-t relative bottom-0">
@@ -434,18 +438,7 @@
         <p class="text-center">Painel em desenvolvimento</p>
     `
         },
-        {
-            id: 'TESTE',
-            title: "Painel Obsoleto",
-            image: "https://img.icons8.com/ios-filled/64/000000/settings.png",
-            tags: ["cidadão", "serviços"],
-            popup:true,
-            popupContent:`
-                <p> Painéis Em Fase de Desenvolvimento...</p>`,
-            moduleContent: `
-        <p class="text-center">Painel em desenvolvimento</p>
-    `
-        },
+        
         {
             id: 'outrosPaineis',
             title: "Outros Paineis",
