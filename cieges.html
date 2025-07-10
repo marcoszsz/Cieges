@@ -412,23 +412,35 @@
       {
         id: "mandadosJudiciais",
         title: "Mandados Judiciais",
-        link: "",
         image: "gavel.png",
         tags: ["cidadão", "serviços"],
         popup: true,
         popupContent: `
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=3&objectName=ve14537&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Acompanhamento de Processos</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=3&objectName=ve14550&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Judicialização da Saúde</a>
-            `,
+          <a href="https://sesa.viya.saude.es.gov.br/mj-acompanhamento-processos"
+             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">
+             Acompanhamento de Processos
+          </a>
+          <a href="https://sesa.viya.saude.es.gov.br/mj-judicializacao-saude"
+             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">
+             Judicialização da Saúde
+          </a>
+        `,
         moduleContent: `
-                <h2 class="text-2xl font-bold mb-4">Mandados Judiciais</h2>
-                <p>Acompanhamento de processos judiciais na área da saúde.</p>
-                <div class="mt-4 border p-4 rounded-md bg-gray-50">
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=3&objectName=ve14537&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Acompanhamento de Processos</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=3&objectName=ve14550&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Judicialização da Saúde</a>
-                </div>
-            `,
+          <h2 class="text-2xl font-bold mb-4">Mandados Judiciais</h2>
+          <p>Painéis sobre processos e judicialização na saúde.</p>
+          <div class="mt-4 border p-4 rounded-md bg-gray-50 space-y-1">
+            <a href="https://sesa.viya.saude.es.gov.br/mj-acompanhamento-processos"
+               target="_blank" class="block hover:underline text-[var(--text-color)]">
+               Acompanhamento de Processos
+            </a>
+            <a href="https://sesa.viya.saude.es.gov.br/mj-judicializacao-saude"
+               target="_blank" class="block hover:underline text-[var(--text-color)]">
+               Judicialização da Saúde
+            </a>
+          </div>
+        `,
       },
+
       {
         id: "recursosHumanos",
         title: "Recursos Humanos",
