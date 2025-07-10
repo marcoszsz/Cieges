@@ -209,7 +209,6 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-
     <button
       id="openPopup"
       class="fixed bottom-6 right-6 bg-[var(--primary-color)] hover:bg-[#187591] text-white px-4 py-2 rounded-full shadow-lg transition z-50"
@@ -241,7 +240,6 @@
 
     <div class="w-full h-full">
       <svg viewBox="10 0 1290 200" class="w-full h-full">
-        
         <defs>
           <linearGradient id="gradES" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop
@@ -259,11 +257,15 @@
           fill="url(#gradES)"
           d="M0,160 L48,165.3 C96,171 192,181 288,165.3 C384,149 480,107 576,96 C672,85 768,107 864,117.3 C960,128 1056,128 1152,138.65 C1248,149 1344,171 1392,181.3 L1440,192 L1440,0 L1392,0 L1344,0 L1248,0 L1152,0 L1056,0 L960,0 L864,0 L768,0 L672,0 L576,0 L480,0 L384,0 L288,0 L192,0 L96,0 L48,0 L0,0 Z"
         >
-        <animate attributeName="d" dur="6s" repeatCount="indefinite"
-      values="M0,80L48,86.5C96,93,192,106,288,90C384,74,480,32,576,24C672,16,768,32,864,42C960,54,1056,54,1152,64C1248,74,1344,96,1392,106L1440,120V0H0Z;
+          <animate
+            attributeName="d"
+            dur="6s"
+            repeatCount="indefinite"
+            values="M0,80L48,86.5C96,93,192,106,288,90C384,74,480,32,576,24C672,16,768,32,864,42C960,54,1056,54,1152,64C1248,74,1344,96,1392,106L1440,120V0H0Z;
               M0,64L48,69.3C96,75,192,85,288,70C384,53,480,11,576,4C672,-2,768,12,864,22C960,34,1056,34,1152,45C1248,56,1344,77,1392,88L1440,96V0H0Z;
-              M0,80L48,86.5C96,93,192,106,288,90C384,74,480,32,576,24C672,16,768,32,864,42C960,54,1056,54,1152,64C1248,74,1344,96,1392,106L1440,120V0H0Z"/>
-    </path>
+              M0,80L48,86.5C96,93,192,106,288,90C384,74,480,32,576,24C672,16,768,32,864,42C960,54,1056,54,1152,64C1248,74,1344,96,1392,106L1440,120V0H0Z"
+          />
+        </path>
       </svg>
     </div>
 
@@ -322,19 +324,23 @@
         </a>
       </nav>
     </aside>
-    <main id="mainContent"
-    class="main-content flex-1 pt-0 md:pt- p-3 transition-all duration-300 ease-in-out">
+    <main
+      id="mainContent"
+      class="main-content flex-1 pt-0 md:pt- p-3 transition-all duration-300 ease-in-out"
+    >
       <div class="max-w-5xl mx-auto">
         <!-- Ajuste aqui -->
         <div
           id="cardContainer"
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center"></div>
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center"
+        ></div>
         <div id="moduleContentArea" class="hidden"></div>
       </div>
     </main>
 
-    <footer class="w-full bg-gray-200 py-3 text-center text-xs text-gray-700 border-t mt-auto">
-
+    <footer
+      class="w-full bg-gray-200 py-3 text-center text-xs text-gray-700 border-t mt-auto"
+    >
       <p class="font-semibold">
         SESA- Secretaria de Estado de Saúde do Espírito Santo
       </p>
@@ -378,33 +384,31 @@
         tags: ["cidadão", "serviços"],
         popup: true,
         popupContent: `
-                <a href="http://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2Fd7bb7c2b-28c9-42bf-8818-28ac9f084230&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Painel Transparência para Consultas e Exames</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão de Oferta</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão de Filas</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão Clínica</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Absenteísmo</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Opinião Formativa</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão de Acesso</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Gestão Enunciado CNJ93</a>
-                <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=1&objectName=ve18184&quickView=true&sas-welcome=false" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm text-gray-700">Deslocamento</a>
-            `,
+          <a href="https://sesa.viya.saude.es.gov.br/regamb-absenteismo"                target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Absenteísmo</a>
+          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-clinica"            target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão Clínica</a>
+          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-acesso"             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Acesso</a>
+          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-filas"              target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Filas</a>
+          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-oferta"             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Oferta</a>
+          <a href="https://sesa.viya.saude.es.gov.br/regamb-opiniao-formativa"         target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Opinião Formativa</a>
+          <a href="https://sesa.viya.saude.es.gov.br/regamb-logistica-atendimento-medico" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Distância & Logística de Atendimento</a>
+          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-enunciado-cnj93"    target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão Enunciado CNJ 93</a>
+        `,
         moduleContent: `
-                <h2 class="text-2xl font-bold mb-4">Regulação Ambulatorial</h2>
-                <p>Conteúdo detalhado e painéis interativos sobre a Regulação Ambulatorial.</p>
-                <div class="mt-4 border p-4 rounded-md bg-gray-50">
-                    <h3 class="font-semibold text-lg mb-2">Acessos Rápidos:</h3>
-                    <a href="http://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2Fd7bb7c2b-28c9-42bf-8818-28ac9f084230&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Transparência para Consultas e Exames</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Oferta</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Filas</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Clínica</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Absenteísmo</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Opinião Formativa</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Acesso</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=0&objectName=ve12941&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Enunciado CNJ93</a>
-                    <a href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F86a7244e-2304-4c42-a351-449f51870fc4&sectionIndex=1&objectName=ve18184&quickView=true&sas-welcome=false" target="_blank" class="block hover:underline text-[var(--text-color)]">Deslocamento</a>
-                </div>
-            `,
+          <h2 class="text-2xl font-bold mb-4">Regulação Ambulatorial</h2>
+          <p>Painéis e indicadores para a gestão ambulatorial.</p>
+          <div class="mt-4 border p-4 rounded-md bg-gray-50 space-y-1">
+            <a href="https://sesa.viya.saude.es.gov.br/regamb-absenteismo"                target="_blank" class="block hover:underline text-[var(--text-color)]">Absenteísmo</a>
+            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-clinica"            target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Clínica</a>
+            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-acesso"             target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Acesso</a>
+            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-filas"              target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Filas</a>
+            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-oferta"             target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Oferta</a>
+            <a href="https://sesa.viya.saude.es.gov.br/regamb-opiniao-formativa"         target="_blank" class="block hover:underline text-[var(--text-color)]">Opinião Formativa</a>
+            <a href="https://sesa.viya.saude.es.gov.br/regamb-logistica-atendimento-medico" target="_blank" class="block hover:underline text-[var(--text-color)]">Distância & Logística de Atendimento</a>
+            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-enunciado-cnj93"    target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Enunciado CNJ 93</a>
+          </div>
+        `,
       },
+
       {
         id: "mandadosJudiciais",
         title: "Mandados Judiciais",
@@ -429,9 +433,9 @@
         id: "recursosHumanos",
         title: "Recursos Humanos",
         image: "recurs.png",
-        underConstruction: true,          //  🔧 NOVO
+        underConstruction: true, //  🔧 NOVO
         tags: ["Institucional"],
-        popup: false,                     // desativa pop-up antigo
+        popup: false, // desativa pop-up antigo
         moduleContent: `
           <h2 class="text-2xl font-bold mb-4">Recursos Humanos</h2>
           <p class="text-center">Painel em construção 🚧</p>
@@ -441,7 +445,7 @@
         id: "assistenciaFarmaceutica",
         title: "Assistência Farmacêutica",
         image: "farmacia aaa.png",
-        underConstruction: true,          //  🔧 NOVO
+        underConstruction: true, //  🔧 NOVO
         tags: ["cidadão", "serviços"],
         popup: false,
         moduleContent: `
@@ -453,7 +457,7 @@
         id: "contratualizacao",
         title: "Contratualização",
         image: "fina-h.png",
-        underConstruction: true,          //  🔧 NOVO
+        underConstruction: true, //  🔧 NOVO
         tags: ["Institucional", "dados"],
         popup: false,
         moduleContent: `
@@ -465,7 +469,7 @@
         id: "regulacaoLeitos",
         title: "Regulação de Leitos",
         image: "CAMA.jpg",
-        underConstruction: true,          //  🔧 NOVO
+        underConstruction: true, //  🔧 NOVO
         tags: ["cidadão", "serviços"],
         popup: false,
         moduleContent: `
@@ -473,7 +477,7 @@
           <p class="text-center">Painel em construção 🚧</p>
         `,
       },
-      
+
       {
         id: "atencaoPrimaria",
         title: "Atenção Primária",
@@ -520,59 +524,60 @@
     let searchTerm = "";
 
     function renderCards() {
-        container.innerHTML = "";
-      
-        const filtered = cardsData.filter(card => {
-          const matchCategory =
-            activeCategory === "Todos" || card.category === activeCategory;
-          const matchText =
-            card.title.toLowerCase().includes(searchTerm) ||
-            (card.description && card.description.toLowerCase().includes(searchTerm));
-          return matchCategory && matchText;
-        });
-      
-        if (!filtered.length) {
-          container.innerHTML = `<p class="col-span-full text-center text-gray-500">
+      container.innerHTML = "";
+
+      const filtered = cardsData.filter((card) => {
+        const matchCategory =
+          activeCategory === "Todos" || card.category === activeCategory;
+        const matchText =
+          card.title.toLowerCase().includes(searchTerm) ||
+          (card.description &&
+            card.description.toLowerCase().includes(searchTerm));
+        return matchCategory && matchText;
+      });
+
+      if (!filtered.length) {
+        container.innerHTML = `<p class="col-span-full text-center text-gray-500">
             Nenhuma plataforma encontrada.</p>`;
-        }
-      
-        filtered.forEach(card => {
-          const el = document.createElement("div");
-          el.setAttribute("data-id", card.id);
-          el.className =
-            "w-full max-w-[220px] h-full bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center transition-transform transform hover:scale-105 relative border-t-4 border-[var(--primary-color)]";
-      
-          el.innerHTML = `
+      }
+
+      filtered.forEach((card) => {
+        const el = document.createElement("div");
+        el.setAttribute("data-id", card.id);
+        el.className =
+          "w-full max-w-[220px] h-full bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center transition-transform transform hover:scale-105 relative border-t-4 border-[var(--primary-color)]";
+
+        el.innerHTML = `
             <img src="${card.image}" alt="${card.title}"
                  class="h-24 w-24 object-contain mx-auto mb-3" />
             <h3 class="text-base font-bold mb-1 uppercase text-center text-[var(--text-color)]">
               ${card.title}
             </h3>`;
-      
-          if (card.underConstruction) {
-            el.classList.add("opacity-60", "cursor-not-allowed");
-            el.innerHTML += `
+
+        if (card.underConstruction) {
+          el.classList.add("opacity-60", "cursor-not-allowed");
+          el.innerHTML += `
               <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold 
                            px-2 py-0.5 rounded">🚧 Em construção</span>`;
-            return container.appendChild(el);
+          return container.appendChild(el);
+        }
+
+        el.classList.add("cursor-pointer");
+        el.addEventListener("click", (event) => {
+          trackAccess(card.title);
+          if (card.popup && card.popupContent) {
+            abrirModal(card.title, card.popupContent);
+          } else if (card.link) {
+            window.open(card.link, "_blank");
+          } else if (card.moduleContent) {
+            loadModuleContent(card.title, card.moduleContent);
           }
-      
-          el.classList.add("cursor-pointer");
-          el.addEventListener("click", event => {
-            trackAccess(card.title);
-            if (card.popup && card.popupContent) {
-              abrirModal(card.title, card.popupContent);
-            } else if (card.link) {
-              window.open(card.link, "_blank");
-            } else if (card.moduleContent) {
-              loadModuleContent(card.title, card.moduleContent);
-            }
-            event.stopPropagation();
-          });
-      
-          container.appendChild(el);
+          event.stopPropagation();
         });
-      }
+
+        container.appendChild(el);
+      });
+    }
     function abrirModal(titulo, conteudo) {
       document.getElementById("modalTitle").innerText = titulo;
       document.getElementById("modalContent").innerHTML = conteudo;
