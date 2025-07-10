@@ -328,11 +328,10 @@
       id="mainContent"
       class="main-content flex-1 pt-0 md:pt- p-3 transition-all duration-300 ease-in-out"
     >
-      <div class="max-w-5xl mx-auto">
-        <!-- Ajuste aqui -->
+      <div class="max-w-8xl mx-auto">
         <div
           id="cardContainer"
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-9 justify-items-center"
         ></div>
         <div id="moduleContentArea" class="hidden"></div>
       </div>
@@ -495,34 +494,39 @@
         title: "Atenção Primária",
         image: "atencao-primaria.png",
         tags: ["cidadão", "serviços"],
-        popup: true,
-        popupContent: `
-                <p>Em Fase de Desenvolvimento</p>`,
+        underConstruction: true, //  🔧 NOVO
+        popup: false,
         moduleContent: `
         <h2 class="text-2xl font-bold mb-4">Atenção Primária</h2>
-        <p class="text-center">Painel em desenvolvimento</p>
+          <p class="text-center">Painel em construção 🚧</p>
     `,
       },
 
       {
-        id: "outrosPaineis",
-        title: "Outros Paineis",
-        image: "outros.jpg",
+        id: "painelInfoSaude",
+        title: "Painel Info-Saúde",
+        image: "info.png",      
+        underConstruction: true,
         tags: ["cidadão", "serviços"],
-        popup: true,
-        popupContent: `
-                  <a href="http://info-saude.hml.sus.es.gov.br/" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Info-Saúde</a>
-                <a href="https://observatorio-saudes.vercel.app/observatorio.html" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Observatorio de Saúde</a>
-            `,
+        popup: false,
         moduleContent: `
-                <h2 class="text-2xl font-bold mb-4">Outros Painéis</h2>
-                <p>Aqui você encontra acesso a painéis diversos e em desenvolvimento.</p>
-                <div class="mt-4 border p-4 rounded-md bg-gray-50">
-                <a href="http://info-saude.hml.sus.es.gov.br/" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Info-Saúde</a>
-                <a href="https://observatorio-saudes.vercel.app/observatorio.html" target="_blank" class="block hover:underline text-[var(--text-color)]">Painel Observatorio de Saúde</a>
-                </div>
-            `,
+          <h2 class="text-2xl font-bold mb-4">Painel Info-Saúde</h2>
+          <p class="text-center">Painel em construção 🚧</p>
+        `,
       },
+      {
+        id: "painelObservatorio",
+        title: "Observatório Capixaba de Direito à Saúde",
+        image: "observatorio.png",      // idem
+        underConstruction: true,
+        tags: ["cidadão", "serviços"],
+        popup: false,
+        moduleContent: `
+          <h2 class="text-2xl font-bold mb-4">Observatório Capixaba de Direito à Saúde</h2>
+          <p class="text-center">Painel em construção 🚧</p>
+        `,
+      },
+      
     ];
 
     const container = document.getElementById("cardContainer");
