@@ -270,11 +270,12 @@
     </div>
 
     <header
-      class="fixed top-0 left-0 w-full bg-white shadow-md z-40 flex items-center justify-center p-4 h-20 md:h-24"
+      class="fixed top-0 left-0 w-full bg-white shadow-md z-40 flex items-center justify-between px-4 h-20 md:h-24"
     >
+      <!-- Botão menu (mobile apenas) -->
       <button
         id="menuToggle"
-        class="absolute left-2 lg:hidden sidebar-toggle-button text-gray-700 hover:text-gray-900 focus:outline-none"
+        class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none"
       >
         <svg
           class="w-6 h-6"
@@ -292,16 +293,24 @@
         </svg>
       </button>
 
+       <img
+        src="Brasao_Governo.png"
+        alt="Governo do Espírito Santo"
+        class="h-12 md:h-16 w-auto"
+      />
+
       <h1
-        class="text-2xl md:text-2xl font-extrabold bg-gradient-to-r from-[#73b6ca] to-pink-600 text-transparent bg-clip-text text-center drop-shadow px-4"
+        class="flex-1 text-center text-lg md:text-2xl font-extrabold bg-gradient-to-r from-[#73b6ca] to-pink-600 text-transparent bg-clip-text drop-shadow px-2 leading-tight"
       >
-        CIEGES – Centro Integrado de Estratégia e Gestão em Saúde
+        CIEGES – Centro Integrado de
+        <br class="block md:hidden" />
+        Estratégia e Gestão em Saúde
       </h1>
 
       <img
         src="Brasao_Governo.png"
         alt="Governo do Espírito Santo"
-        class="absolute right-4 h-12 md:h-16 header-logo"
+        class="h-12 md:h-16 w-auto"
       />
     </header>
 
@@ -339,14 +348,14 @@
       </button>
 
       <div id="publicSubmenu" class="ml-4 hidden flex-col space-y-1">
-        <a
-          href="http://info-saude.hml.sus.es.gov.br/"
+        <!-- <a
+          href="https://infosaude.vercel.app/Info-Saude.html"
           target="_blank"
           class="flex items-center p-3 hover:bg-[var(--hover-bg)] transition sidebar-link"
         >
           <img src="info.png" alt="Info-Saúde" class="h-5 w-5 mr-3" />
           <span class="sidebar-text">Info‑Saúde</span>
-        </a>
+        </a> -->
 
         <a
           href="https://observatorio-saude.vercel.app/observatorio.html"
