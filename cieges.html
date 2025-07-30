@@ -291,11 +291,7 @@
           ></path>
         </svg>
       </button>
-      <img
-        src="logo sesa.png"
-        alt="Logo SESA-ES"
-        class="absolute left-12 h-12 md:h-16 header-logo"
-      />
+
       <h1
         class="text-2xl md:text-2xl font-extrabold bg-gradient-to-r from-[#73b6ca] to-pink-600 text-transparent bg-clip-text text-center drop-shadow px-4"
       >
@@ -323,6 +319,37 @@
           <span class="sidebar-text">Painéis</span>
         </a>
       </nav>
+      <div
+        class="mx-3 my-6 p-4 bg-white rounded-lg shadow border-l-4 border-[var(--primary-color)]"
+      >
+        <h3 class="text-sm font-bold leading-tight mb-2">
+          <span class="px-1">Acesso aos painéis</span><br />
+          <span class="px-1">do CIEGES</span>
+        </h3>
+
+        <hr class="my-3 border-gray-300" />
+
+        <p class="text-xs mb-4">
+          Está <strong>sem acesso</strong><br />
+          aos Painéis Analíticos?
+        </p>
+        <p class="text-xs mb-6">
+          Preencha o formulário<br />e justifique seu acesso.
+        </p>
+
+        <a
+          href="https://treinamento.e-flow.es.gov.br/flow-definition/933cd358-74d3-41f7-f754-e5a86c1d2830?d=1"
+          target="_blank"
+          class="flex items-center justify-center gap-2 bg-[var(--primary-color)] hover:bg-[#187591] text-white font-semibold py-2 rounded-md text-xs"
+        >
+          <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm-3 5a3 3 0 016 0v3H9V6zm9 5v9H6v-9h12z"
+            />
+          </svg>
+          Solicitar acesso
+        </a>
+      </div>
     </aside>
     <main
       id="mainContent"
@@ -338,16 +365,28 @@
     </main>
 
     <footer
-      class="w-full bg-gray-200 py-3 text-center text-xs text-gray-700 border-t mt-auto"
+      class="w-full bg-gray-200 py-4 text-xs text-gray-700 border-t mt-auto"
     >
-      <p class="font-semibold">
-        SESA- Secretaria de Estado de Saúde do Espírito Santo
-      </p>
-      <p>Núcleo de Desenvolvimento De Sistemas - NEDTI | SESA ES</p>
-      <p class="mt-1">
-        &copy; <span id="currentYear"></span> Governo do Estado do Espírito
-        Santo
-      </p>
+      <div
+        class="max-w-6xl mx-auto flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-6"
+      >
+        <img
+          src="Brasao_Governo.png"
+          alt="Governo do Espírito Santo"
+          class="h-10 sm:h-12"
+        />
+
+        <div class="text-center sm:text-left">
+          <p class="font-semibold">
+            SESA – Secretaria de Estado de Saúde do Espírito Santo
+          </p>
+          <p>Núcleo de Desenvolvimento de Sistemas – NEDTI | SESA‑ES</p>
+          <p class="mt-1">
+            &copy; <span id="currentYear"></span> Governo do Estado do Espírito
+            Santo
+          </p>
+        </div>
+      </div>
     </footer>
 
     <div
@@ -501,23 +540,10 @@
           <p class="text-center">Painel em construção 🚧</p>
     `,
       },
-
-      {
-        id: "painelInfoSaude",
-        title: "Painel Info-Saúde",
-        image: "info.png",      
-        underConstruction: true,
-        tags: ["cidadão", "serviços"],
-        popup: false,
-        moduleContent: `
-          <h2 class="text-2xl font-bold mb-4">Painel Info-Saúde</h2>
-          <p class="text-center">Painel em construção 🚧</p>
-        `,
-      },
       {
         id: "painelObservatorio",
         title: "Observatório Capixaba de Direito à Saúde",
-        image: "observatorio.png",      // idem
+        image: "observatorio.png", // idem
         underConstruction: true,
         tags: ["cidadão", "serviços"],
         popup: false,
@@ -526,7 +552,6 @@
           <p class="text-center">Painel em construção 🚧</p>
         `,
       },
-      
     ];
 
     const container = document.getElementById("cardContainer");
