@@ -477,7 +477,6 @@
         category: "Regulação",
         tags: ["cidadão", "serviços"],
         popup: true,
-        collapsible: true,
         popupContent: `
               <a href="https://sesa.viya.saude.es.gov.br/regamb-absenteismo"                target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Absenteísmo</a>
               <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-clinica"            target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão Clínica</a>
@@ -508,7 +507,6 @@
         id: "mandadosJudiciais",
         title: "Mandados Judiciais",
         image: "gavel.png",
-        collapsible: true,
         tags: ["cidadão", "serviços"],
         popup: true,
         popupContent: `
@@ -893,6 +891,7 @@
     );
 
     const sidebarNav = sidebar.querySelector("nav");
+
     cardsData.forEach((card) => {
       if (card.sidebar === false) return; // 🚫 não cria o link na sidebar
 
@@ -909,10 +908,11 @@
         "duration-200",
         "sidebar-link"
       );
+      linkEl.setAttribute("data-module-id", card.id);
 
       // ícone
       const imgEl = document.createElement("img");
-      imgEl.src = card.image; // caminho da imagem
+      imgEl.src = card.image;
       imgEl.alt = card.title;
       imgEl.classList.add("w-6", "h-6"); // tamanho fixo
 
@@ -924,7 +924,13 @@
       linkEl.appendChild(imgEl);
       linkEl.appendChild(spanEl);
 
-      document.querySelector("nav").appendChild(linkEl);
+      // 🚀 adiciona ação no clique
+      linkEl.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadModuleContent(card.title, card.moduleContent);
+      });
+
+      sidebarNav.appendChild(linkEl);
     });
 
     document.addEventListener("DOMContentLoaded", () => {
