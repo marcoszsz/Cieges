@@ -272,7 +272,6 @@
     <header
       class="fixed top-0 left-0 w-full bg-white shadow-md z-40 flex items-center justify-between px-4 h-20 md:h-24"
     >
-      <!-- Botão menu (mobile apenas) -->
       <button
         id="menuToggle"
         class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none"
@@ -312,7 +311,7 @@
       >
         <br />
         <br />
-        <span class="sidebar-text flex-1">📊 Painéis Públicos</span>
+        <span class="sidebar-text flex-1 ">📊 Painéis Públicos</span>
         <svg
           id="chevron"
           class="h-4 w-4 transition"
@@ -376,7 +375,7 @@
           class="flex items-center p-4 hover:bg-[var(--hover-bg)] dark:hover:bg-[var(--dark-hover-bg)] transition-colors duration-200 sidebar-link"
         >
           <img src="saude-dashboard.png" alt="Dashboard" class="h-6 w-6 mr-3" />
-          <span class="sidebar-text">Painéis Privados</span>
+          <span class="sidebar-text #4f5560">Painéis Privados</span>
         </a>
       </nav>
       <br />
@@ -414,7 +413,7 @@
       <div class="max-w-8xl mx-auto">
         <div
           id="cardContainer"
-          class="grid grid-cols-4 gap-6 justify-items-center mx-auto"
+          class="grid grid-cols-4 gap-1 justify-items-center mx-auto"
         ></div>
         <div id="moduleContentArea" class="hidden"></div>
       </div>
@@ -893,14 +892,14 @@
     const sidebarNav = sidebar.querySelector("nav");
 
     cardsData.forEach((card) => {
-      if (card.sidebar === false) return; // 🚫 não cria o link na sidebar
+      if (card.sidebar === false) return; 
 
       const linkEl = document.createElement("a");
       linkEl.href = "#";
       linkEl.classList.add(
         "flex",
         "items-center",
-        "gap-3", // espaço entre ícone e texto
+        "gap-3", 
         "p-4",
         "hover:bg-[var(--hover-bg)]",
         "dark:hover:bg-[var(--dark-hover-bg)]",
