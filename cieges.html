@@ -319,6 +319,44 @@
           <span class="sidebar-text">Painéis</span>
         </a>
       </nav>
+      <button
+        id="publicToggle"
+        class="flex w-full items-center p-4 text-left hover:bg-[var(--hover-bg)] transition font-semibold"
+      >
+        <span class="sidebar-text flex-1">📊 Painéis Públicos</span>
+        <svg
+          id="chevron"
+          class="h-4 w-4 transition"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+
+      <div id="publicSubmenu" class="ml-4 hidden flex-col space-y-1">
+        <a
+          href="https://infosaude.vercel.app/Info-Saude.html"
+          target="_blank"
+          class="flex items-center p-3 hover:bg-[var(--hover-bg)] transition sidebar-link"
+        >
+          <img src="info.png" alt="Info-Saúde" class="h-5 w-5 mr-3" />
+          <span class="sidebar-text">Info‑Saúde</span>
+        </a>
+
+        <a
+          href="https://observatorio-saude.vercel.app/observatorio.html"
+          target="_blank"
+          class="flex items-center p-3 hover:bg-[var(--hover-bg)] transition sidebar-link"
+        >
+          <img src="observatorio.png" alt="Observatório" class="h-5 w-5 mr-3" />
+          <span class="sidebar-text">Observatório de Saúde</span>
+        </a>
+      </div>
       <div
         class="mx-3 my-6 p-4 bg-white rounded-lg shadow border-l-4 border-[var(--primary-color)]"
       >
@@ -422,29 +460,29 @@
         tags: ["cidadão", "serviços"],
         popup: true,
         popupContent: `
-          <a href="https://sesa.viya.saude.es.gov.br/regamb-absenteismo"                target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Absenteísmo</a>
-          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-clinica"            target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão Clínica</a>
-          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-acesso"             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Acesso</a>
-          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-filas"              target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Filas</a>
-          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-oferta"             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Oferta</a>
-          <a href="https://sesa.viya.saude.es.gov.br/regamb-opiniao-formativa"         target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Opinião Formativa</a>
-          <a href="https://sesa.viya.saude.es.gov.br/regamb-logistica-atendimento-medico" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Distância & Logística de Atendimento</a>
-          <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-enunciado-cnj93"    target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão Enunciado CNJ 93</a>
-        `,
+              <a href="https://sesa.viya.saude.es.gov.br/regamb-absenteismo"                target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Absenteísmo</a>
+              <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-clinica"            target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão Clínica</a>
+              <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-acesso"             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Acesso</a>
+              <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-filas"              target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Filas</a>
+              <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-oferta"             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão de Oferta</a>
+              <a href="https://sesa.viya.saude.es.gov.br/regamb-opiniao-formativa"         target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Opinião Formativa</a>
+              <a href="https://sesa.viya.saude.es.gov.br/regamb-logistica-atendimento-medico" target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Distância & Logística de Atendimento</a>
+              <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-enunciado-cnj93"    target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão Enunciado CNJ 93</a>
+            `,
         moduleContent: `
-          <h2 class="text-2xl font-bold mb-4">Regulação Ambulatorial</h2>
-          <p>Painéis e indicadores para a gestão ambulatorial.</p>
-          <div class="mt-4 border p-4 rounded-md bg-gray-50 space-y-1">
-            <a href="https://sesa.viya.saude.es.gov.br/regamb-absenteismo"                target="_blank" class="block hover:underline text-[var(--text-color)]">Absenteísmo</a>
-            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-clinica"            target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Clínica</a>
-            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-acesso"             target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Acesso</a>
-            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-filas"              target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Filas</a>
-            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-oferta"             target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Oferta</a>
-            <a href="https://sesa.viya.saude.es.gov.br/regamb-opiniao-formativa"         target="_blank" class="block hover:underline text-[var(--text-color)]">Opinião Formativa</a>
-            <a href="https://sesa.viya.saude.es.gov.br/regamb-logistica-atendimento-medico" target="_blank" class="block hover:underline text-[var(--text-color)]">Distância & Logística de Atendimento</a>
-            <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-enunciado-cnj93"    target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Enunciado CNJ 93</a>
-          </div>
-        `,
+              <h2 class="text-2xl font-bold mb-4">Regulação Ambulatorial</h2>
+              <p>Painéis e indicadores para a gestão ambulatorial.</p>
+              <div class="mt-4 border p-4 rounded-md bg-gray-50 space-y-1">
+                <a href="https://sesa.viya.saude.es.gov.br/regamb-absenteismo"                target="_blank" class="block hover:underline text-[var(--text-color)]">Absenteísmo</a>
+                <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-clinica"            target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Clínica</a>
+                <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-acesso"             target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Acesso</a>
+                <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-filas"              target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Filas</a>
+                <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-oferta"             target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão de Oferta</a>
+                <a href="https://sesa.viya.saude.es.gov.br/regamb-opiniao-formativa"         target="_blank" class="block hover:underline text-[var(--text-color)]">Opinião Formativa</a>
+                <a href="https://sesa.viya.saude.es.gov.br/regamb-logistica-atendimento-medico" target="_blank" class="block hover:underline text-[var(--text-color)]">Distância & Logística de Atendimento</a>
+                <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-enunciado-cnj93"    target="_blank" class="block hover:underline text-[var(--text-color)]">Gestão Enunciado CNJ 93</a>
+              </div>
+            `,
       },
 
       {
@@ -454,29 +492,29 @@
         tags: ["cidadão", "serviços"],
         popup: true,
         popupContent: `
-          <a href="https://sesa.viya.saude.es.gov.br/mj-acompanhamento-processos"
-             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">
-             Acompanhamento de Processos
-          </a>
-          <a href="https://sesa.viya.saude.es.gov.br/mj-judicializacao-saude"
-             target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">
-             Judicialização da Saúde
-          </a>
-        `,
+              <a href="https://sesa.viya.saude.es.gov.br/mj-acompanhamento-processos"
+                 target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">
+                 Acompanhamento de Processos
+              </a>
+              <a href="https://sesa.viya.saude.es.gov.br/mj-judicializacao-saude"
+                 target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">
+                 Judicialização da Saúde
+              </a>
+            `,
         moduleContent: `
-          <h2 class="text-2xl font-bold mb-4">Mandados Judiciais</h2>
-          <p>Painéis sobre processos e judicialização na saúde.</p>
-          <div class="mt-4 border p-4 rounded-md bg-gray-50 space-y-1">
-            <a href="https://sesa.viya.saude.es.gov.br/mj-acompanhamento-processos"
-               target="_blank" class="block hover:underline text-[var(--text-color)]">
-               Acompanhamento de Processos
-            </a>
-            <a href="https://sesa.viya.saude.es.gov.br/mj-judicializacao-saude"
-               target="_blank" class="block hover:underline text-[var(--text-color)]">
-               Judicialização da Saúde
-            </a>
-          </div>
-        `,
+              <h2 class="text-2xl font-bold mb-4">Mandados Judiciais</h2>
+              <p>Painéis sobre processos e judicialização na saúde.</p>
+              <div class="mt-4 border p-4 rounded-md bg-gray-50 space-y-1">
+                <a href="https://sesa.viya.saude.es.gov.br/mj-acompanhamento-processos"
+                   target="_blank" class="block hover:underline text-[var(--text-color)]">
+                   Acompanhamento de Processos
+                </a>
+                <a href="https://sesa.viya.saude.es.gov.br/mj-judicializacao-saude"
+                   target="_blank" class="block hover:underline text-[var(--text-color)]">
+                   Judicialização da Saúde
+                </a>
+              </div>
+            `,
       },
 
       {
@@ -487,9 +525,9 @@
         tags: ["Institucional"],
         popup: false, // desativa pop-up antigo
         moduleContent: `
-          <h2 class="text-2xl font-bold mb-4">Recursos Humanos</h2>
-          <p class="text-center">Painel em construção 🚧</p>
-        `,
+              <h2 class="text-2xl font-bold mb-4">Recursos Humanos</h2>
+              <p class="text-center">Painel em construção 🚧</p>
+            `,
       },
       {
         id: "assistenciaFarmaceutica",
@@ -499,9 +537,9 @@
         tags: ["cidadão", "serviços"],
         popup: false,
         moduleContent: `
-          <h2 class="text-2xl font-bold mb-4">Assistência Farmacêutica</h2>
-          <p class="text-center">Painel em construção 🚧</p>
-        `,
+              <h2 class="text-2xl font-bold mb-4">Assistência Farmacêutica</h2>
+              <p class="text-center">Painel em construção 🚧</p>
+            `,
       },
       {
         id: "contratualizacao",
@@ -511,9 +549,9 @@
         tags: ["Institucional", "dados"],
         popup: false,
         moduleContent: `
-          <h2 class="text-2xl font-bold mb-4">Contratualização</h2>
-          <p class="text-center">Painel em construção 🚧</p>
-        `,
+              <h2 class="text-2xl font-bold mb-4">Contratualização</h2>
+              <p class="text-center">Painel em construção 🚧</p>
+            `,
       },
       {
         id: "regulacaoLeitos",
@@ -523,9 +561,9 @@
         tags: ["cidadão", "serviços"],
         popup: false,
         moduleContent: `
-          <h2 class="text-2xl font-bold mb-4">Regulação de Leitos</h2>
-          <p class="text-center">Painel em construção 🚧</p>
-        `,
+              <h2 class="text-2xl font-bold mb-4">Regulação de Leitos</h2>
+              <p class="text-center">Painel em construção 🚧</p>
+            `,
       },
 
       {
@@ -536,10 +574,10 @@
         underConstruction: true, //  🔧 NOVO
         popup: false,
         moduleContent: `
-        <h2 class="text-2xl font-bold mb-4">Atenção Primária</h2>
-          <p class="text-center">Painel em construção 🚧</p>
-    `,
-      }
+            <h2 class="text-2xl font-bold mb-4">Atenção Primária</h2>
+              <p class="text-center">Painel em construção 🚧</p>
+        `,
+      },
     ];
 
     const container = document.getElementById("cardContainer");
@@ -567,7 +605,7 @@
 
       if (!filtered.length) {
         container.innerHTML = `<p class="col-span-full text-center text-gray-500">
-            Nenhuma plataforma encontrada.</p>`;
+                Nenhuma plataforma encontrada.</p>`;
       }
 
       filtered.forEach((card) => {
@@ -577,17 +615,17 @@
           "w-full max-w-[220px] h-full bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center transition-transform transform hover:scale-105 relative border-t-4 border-[var(--primary-color)]";
 
         el.innerHTML = `
-            <img src="${card.image}" alt="${card.title}"
-                 class="h-24 w-24 object-contain mx-auto mb-3" />
-            <h3 class="text-base font-bold mb-1 uppercase text-center text-[var(--text-color)]">
-              ${card.title}
-            </h3>`;
+                <img src="${card.image}" alt="${card.title}"
+                     class="h-24 w-24 object-contain mx-auto mb-3" />
+                <h3 class="text-base font-bold mb-1 uppercase text-center text-[var(--text-color)]">
+                  ${card.title}
+                </h3>`;
 
         if (card.underConstruction) {
           el.classList.add("opacity-60", "cursor-not-allowed");
           el.innerHTML += `
-              <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold 
-                           px-2 py-0.5 rounded">🚧 Em construção</span>`;
+                  <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold
+                               px-2 py-0.5 rounded">🚧 Em construção</span>`;
           return container.appendChild(el);
         }
 
@@ -815,9 +853,9 @@
       linkEl.setAttribute("data-module-id", card.id);
 
       linkEl.innerHTML = `
-            <img src="${card.image}" alt="${card.title}" class="h-6 w-6 mr-3">
-            <span class="sidebar-text">${card.title}</span>
-        `;
+                <img src="${card.image}" alt="${card.title}" class="h-6 w-6 mr-3">
+                <span class="sidebar-text">${card.title}</span>
+            `;
 
       linkEl.addEventListener("click", (e) => {
         e.preventDefault();
@@ -840,6 +878,15 @@
 
     tailwind.config = {
       darkMode: "class",
+    };
+
+    const publicToggle = document.getElementById("publicToggle");
+    const publicSubmenu = document.getElementById("publicSubmenu");
+    const chevron = document.getElementById("chevron");
+
+    publicToggle.onclick = () => {
+      publicSubmenu.classList.toggle("hidden");
+      chevron.classList.toggle("rotate-180");
     };
   </script>
 </html>
