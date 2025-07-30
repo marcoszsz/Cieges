@@ -311,7 +311,7 @@
       >
         <br />
         <br />
-        <span class="sidebar-text flex-1 ">📊 Painéis Públicos</span>
+        <span class="sidebar-text flex-1">📊 Painéis Públicos</span>
         <svg
           id="chevron"
           class="h-4 w-4 transition"
@@ -408,12 +408,13 @@
     </aside>
     <main
       id="mainContent"
-      class="main-content flex-1 pt-0 md:pt- p-3 transition-all duration-300 ease-in-out"
+      class="main-content flex-1 p-6 transition-all duration-300 ease-in-out"
     >
-      <div class="max-w-8xl mx-auto">
+      <div class="max-w-5xl mx-auto">
+        <!-- Aqui fica a área dinâmica -->
         <div
           id="cardContainer"
-          class="grid grid-cols-4 gap-1 justify-items-center mx-auto"
+          class="grid grid-cols-4 gap-4 justify-items-center mx-auto"
         ></div>
         <div id="moduleContentArea" class="hidden"></div>
       </div>
@@ -892,14 +893,14 @@
     const sidebarNav = sidebar.querySelector("nav");
 
     cardsData.forEach((card) => {
-      if (card.sidebar === false) return; 
+      if (card.sidebar === false) return;
 
       const linkEl = document.createElement("a");
       linkEl.href = "#";
       linkEl.classList.add(
         "flex",
         "items-center",
-        "gap-3", 
+        "gap-3",
         "p-4",
         "hover:bg-[var(--hover-bg)]",
         "dark:hover:bg-[var(--dark-hover-bg)]",
