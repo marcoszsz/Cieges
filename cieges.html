@@ -306,20 +306,12 @@
       id="sidebar"
       class="fixed top-20 md:top-24 left-0 h-[calc(100%-80px)] md:h-[calc(100%-96px)] bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 sidebar z-30 transition-all duration-300 ease-in-out overflow-y-auto"
     >
-      <nav class="mt-4">
-        <a
-          href="#"
-          id="dashboardLink"
-          class="flex items-center p-4 hover:bg-[var(--hover-bg)] dark:hover:bg-[var(--dark-hover-bg)] transition-colors duration-200 sidebar-link"
-        >
-          <img src="saude-dashboard.png" alt="Dashboard" class="h-6 w-6 mr-3" />
-          <span class="sidebar-text">Painéis</span>
-        </a>
-      </nav>
       <button
         id="publicToggle"
         class="flex w-full items-center p-4 text-left hover:bg-[var(--hover-bg)] transition font-semibold"
       >
+        <br />
+        <br />
         <span class="sidebar-text flex-1">📊 Painéis Públicos</span>
         <svg
           id="chevron"
@@ -349,7 +341,6 @@
           <span class="sidebar-text">Observatório de Saúde</span>
         </a>
 
-
         <a
           href="https://sesa.viya.saude.es.gov.br/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2Fd7bb7c2b-28c9-42bf-8818-28ac9f084230&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false"
           target="_blank"
@@ -378,6 +369,19 @@
           <span class="sidebar-text">Vigilância em Saúde</span>
         </a>
       </div>
+      <nav class="mt-4">
+        <a
+          href="#"
+          id="dashboardLink"
+          class="flex items-center p-4 hover:bg-[var(--hover-bg)] dark:hover:bg-[var(--dark-hover-bg)] transition-colors duration-200 sidebar-link"
+        >
+          <img src="saude-dashboard.png" alt="Dashboard" class="h-6 w-6 mr-3" />
+          <span class="sidebar-text">Painéis Privados</span>
+        </a>
+      </nav>
+      <br />
+      <br />
+      <br />
 
       <div
         class="mx-3 my-6 p-4 bg-white rounded-lg shadow border-l-4 border-[var(--primary-color)]"
@@ -388,14 +392,6 @@
         </h3>
 
         <hr class="my-3 border-gray-300" />
-
-        <p class="text-xs mb-4">
-          Está <strong>sem acesso</strong><br />
-          aos Painéis Analíticos?
-        </p>
-        <p class="text-xs mb-6">
-          Preencha o formulário<br />e justifique seu acesso.
-        </p>
 
         <a
           href="https://treinamento.e-flow.es.gov.br/flow-definition/933cd358-74d3-41f7-f754-e5a86c1d2830?d=1"
@@ -418,7 +414,7 @@
       <div class="max-w-8xl mx-auto">
         <div
           id="cardContainer"
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-9 justify-items-center"
+          class="grid grid-cols-4 gap-6 justify-items-center mx-auto"
         ></div>
         <div id="moduleContentArea" class="hidden"></div>
       </div>
@@ -481,6 +477,7 @@
         category: "Regulação",
         tags: ["cidadão", "serviços"],
         popup: true,
+        collapsible: true,
         popupContent: `
               <a href="https://sesa.viya.saude.es.gov.br/regamb-absenteismo"                target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Absenteísmo</a>
               <a href="https://sesa.viya.saude.es.gov.br/regamb-gestao-clinica"            target="_blank" class="block hover:bg-gray-100 px-3 py-2 text-sm">Gestão Clínica</a>
@@ -511,6 +508,7 @@
         id: "mandadosJudiciais",
         title: "Mandados Judiciais",
         image: "gavel.png",
+        collapsible: true,
         tags: ["cidadão", "serviços"],
         popup: true,
         popupContent: `
@@ -543,6 +541,7 @@
         id: "recursosHumanos",
         title: "Recursos Humanos",
         image: "recurs.png",
+        collapsible: true,
         underConstruction: true,
         tags: ["Institucional"],
         popup: false,
@@ -555,6 +554,7 @@
         id: "assistenciaFarmaceutica",
         title: "Assistência Farmacêutica",
         image: "farmacia aaa.png",
+        collapsible: true,
         underConstruction: true, //  🔧 NOVO
         tags: ["cidadão", "serviços"],
         popup: false,
@@ -567,6 +567,7 @@
         id: "contratualizacao",
         title: "Contratualização",
         image: "fina-h.png",
+        collapsible: true,
         underConstruction: true, //  🔧 NOVO
         tags: ["Institucional", "dados"],
         popup: false,
@@ -578,6 +579,7 @@
       {
         id: "regulacaoLeitos",
         title: "Regulação de Leitos",
+        collapsible: true,
         image: "CAMA.jpg",
         underConstruction: true, //  🔧 NOVO
         tags: ["cidadão", "serviços"],
@@ -592,6 +594,7 @@
         id: "atencaoPrimaria",
         title: "Atenção Primária",
         image: "atencao-primaria.png",
+        collapsible: true,
         tags: ["cidadão", "serviços"],
         underConstruction: true, //  🔧 NOVO
         popup: false,
@@ -599,6 +602,33 @@
             <h2 class="text-2xl font-bold mb-4">Atenção Primária</h2>
               <p class="text-center">Painel em construção 🚧</p>
         `,
+      },
+      {
+        id: "Duvidas",
+        title: "Tenho dúvidas",
+        image: "duvida.png",
+        tags: ["cidadão", "serviços"],
+        popup: true,
+        sidebar: false, // << NÃO aparece na sidebar
+        popupContent: `
+    <div class="p-6 text-center">
+      <div class="flex justify-center mb-4">
+        <div class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full">
+          <img src="duvida.png" alt="Ícone dúvidas" class="w-8 h-8" />
+        </div>
+      </div>
+      <h2 class="text-xl font-bold text-blue-700 mb-2">Central de Dúvidas</h2>
+      <p class="text-gray-600 mb-6">
+        Precisa de ajuda? Encontre informações detalhadas na 
+        <span class="font-semibold">Wiki Saúde da SESA</span>.
+      </p>
+      <a href="https://wiki.saude.es.gov.br" 
+         target="_blank"
+         class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:scale-105 hover:from-blue-700 hover:to-blue-600 transition-all">
+         🔗 Acessar Wiki Saúde
+      </a>
+    </div>
+  `,
       },
     ];
 
@@ -858,13 +888,20 @@
       showDashboard();
     });
 
+    const sidebarItems = cardsData.filter(
+      (card) => card.showInSidebar !== false
+    );
+
     const sidebarNav = sidebar.querySelector("nav");
     cardsData.forEach((card) => {
+      if (card.sidebar === false) return; // 🚫 não cria o link na sidebar
+
       const linkEl = document.createElement("a");
       linkEl.href = "#";
       linkEl.classList.add(
         "flex",
         "items-center",
+        "gap-3", // espaço entre ícone e texto
         "p-4",
         "hover:bg-[var(--hover-bg)]",
         "dark:hover:bg-[var(--dark-hover-bg)]",
@@ -872,18 +909,22 @@
         "duration-200",
         "sidebar-link"
       );
-      linkEl.setAttribute("data-module-id", card.id);
 
-      linkEl.innerHTML = `
-                <img src="${card.image}" alt="${card.title}" class="h-6 w-6 mr-3">
-                <span class="sidebar-text">${card.title}</span>
-            `;
+      // ícone
+      const imgEl = document.createElement("img");
+      imgEl.src = card.image; // caminho da imagem
+      imgEl.alt = card.title;
+      imgEl.classList.add("w-6", "h-6"); // tamanho fixo
 
-      linkEl.addEventListener("click", (e) => {
-        e.preventDefault();
-        loadModuleContent(card.title, card.moduleContent);
-      });
-      sidebarNav.appendChild(linkEl);
+      // texto
+      const spanEl = document.createElement("span");
+      spanEl.textContent = card.title;
+
+      // monta dentro do link
+      linkEl.appendChild(imgEl);
+      linkEl.appendChild(spanEl);
+
+      document.querySelector("nav").appendChild(linkEl);
     });
 
     document.addEventListener("DOMContentLoaded", () => {
