@@ -328,7 +328,7 @@
 
       <div id="publicSubmenu" class="ml-4 hidden flex-col space-y-1">
         <a
-          href="https://observatorio-saudes.vercel.app/observatorio.html"
+          href="https://observatorio-saude.vercel.app/observatorio.html"
           target="_blank"
           class="flex items-center p-3 hover:bg-[var(--hover-bg)] transition sidebar-link"
         >
@@ -960,3 +960,6 @@
   </script>
 </html>
 
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
